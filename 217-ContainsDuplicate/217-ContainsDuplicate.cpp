@@ -1,14 +1,18 @@
-// Last updated: 14/04/2025, 20:24:54
+// Last updated: 14/04/2025, 20:35:51
 class Solution {
 public:
-    bool isAnagram(string s, string t) {
-        sort(s.begin(), s.end());
-        sort(t.begin(), t.end());
-
-        if(s==t){
-            return true;
+    vector<int> intersect(vector<int>& nums1, vector<int>& nums2) {
+        vector<int>result;
+        for(int i=0;i<nums1.size();i++){
+            for(int j=0;j<nums2.size();j++){
+                if(nums1[i]==nums2[j]){
+                    result.push_back(nums1[i]);
+                    nums2[j] = -1;
+                    break;
+                }
+            }
         }
-        return false;
+        return result;
         
     }
 };
