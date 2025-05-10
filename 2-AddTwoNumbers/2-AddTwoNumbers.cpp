@@ -1,15 +1,20 @@
-// Last updated: 10/05/2025, 21:48:54
+// Last updated: 10/05/2025, 21:54:39
 class Solution {
 public:
-    int removeElement(vector<int>& nums, int val) {
-        int k=0;
+    int strStr(std::string haystack, std::string needle) {
 
-        for(int i=0;i<nums.size();i++){
-            if(nums[i] !=val){
-                nums[k++] = nums[i];
+        if(needle.empty()) return 0;
+        if(needle.length()>haystack.length()) return -1;
+        for(int i=0;i<=haystack.length()- needle.length();++i){
+            if(haystack.substr(i, needle.length())==needle){
+                return i;
             }
         }
-        return k;
+        return -1;
+
+
+
+
+        
     }
-    
 };
