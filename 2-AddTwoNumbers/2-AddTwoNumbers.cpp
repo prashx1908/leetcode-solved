@@ -1,20 +1,14 @@
-// Last updated: 10/05/2025, 21:54:39
+// Last updated: 10/05/2025, 22:00:28
 class Solution {
 public:
-    int strStr(std::string haystack, std::string needle) {
+    int searchInsert(vector<int>& nums, int target) {
 
-        if(needle.empty()) return 0;
-        if(needle.length()>haystack.length()) return -1;
-        for(int i=0;i<=haystack.length()- needle.length();++i){
-            if(haystack.substr(i, needle.length())==needle){
+        for(int i=0;i<nums.size();++i){
+            if(nums[i]>=target){
                 return i;
             }
         }
-        return -1;
-
-
-
-
-        
+     
+        return nums.size();
     }
 };
