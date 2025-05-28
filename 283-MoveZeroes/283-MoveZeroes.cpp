@@ -1,13 +1,12 @@
+// Last updated: 28/05/2025, 09:59:01
 class Solution {
 public:
-    void moveZeroes(vector<int>& nums) {
-        int n= nums.size();
-        int i=0;
-        for(int j=0;j<n;j++){
-            if(nums[j] != 0){
-                swap(nums[i],nums[j]);
-                i++;
-            }
-        }
+    void rotate(vector<int>& nums, int k) {
+        k=k%nums.size();
+        reverse(nums.begin(),nums.begin()+ (nums.size()-k));
+        reverse(nums.begin()+ (nums.size()-k), nums.end());
+        reverse(nums.begin(),nums.end());
+
+        
     }
 };
