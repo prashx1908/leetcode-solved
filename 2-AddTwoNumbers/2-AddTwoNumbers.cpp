@@ -1,41 +1,28 @@
-// Last updated: 28/05/2025, 11:47:23
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
+// Last updated: 02/06/2025, 11:46:34
 class Solution {
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* dummy= new ListNode(0);
-        ListNode* tail= dummy;
-        int carry=0;
-
-        while(l1 != nullptr || l2!= nullptr || carry !=0){
-            int digit1= (l1 != nullptr) ? l1->val :0;
-            int digit2= (l2 != nullptr) ? l2->val :0;
-            int sum = digit1+digit2+carry;
-            int digit= sum%10;
-            carry= sum/10;
-
-             ListNode* newnode= new ListNode(digit);
-             tail->next= newnode;
-             tail= tail->next;
-
-             l1= (l1 != nullptr) ? l1->next:nullptr;
-             l2= (l2 != nullptr) ? l2->next:nullptr;
-
-
-
-        }
-        ListNode* result = dummy->next;
-        delete dummy;
-        return result;
+    string longestPalindrome(string s) {
         
+        string ans="";
+
+        for(int i=0;i<s.size();i++){
+            int low=i;
+            int high=i;
+
+            while(low>=0 && high<s.size() && s[low]==s[high]){
+                if(high-low+1>ans.size())
+                    ans= s.substr(low,high-low+1);
+                low--;
+                high++;
+                }
+                low = i-1;
+                high=i;
+                while(low>=0 && high<s.size() && s[low]==s[high]){
+                    if(high-low+1 > ans.size()) ans=s.substr(low,high-low+1);
+                    low--;
+                    high++;
+                }
+            }
+        return ans;
     }
 };
