@@ -1,4 +1,4 @@
-// Last updated: 03/06/2025, 10:08:07
+// Last updated: 03/06/2025, 10:11:32
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -12,9 +12,13 @@
  */
 class Solution {
 public:
-    int maxDepth(TreeNode* root) {
+    int minDepth(TreeNode* root) {
         if(!root) return 0;
-        return max(maxDepth(root->left), maxDepth(root->right))+1;
+        int l= minDepth(root->left);
+        int r= minDepth(root->right);
+   
+        return 1+ (min(l,r) ? min(l,r):max(l,r));
+        
         
     }
 };
